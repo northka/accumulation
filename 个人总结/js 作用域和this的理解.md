@@ -3,6 +3,7 @@
  - ###从几个有意思的js问题开始###
 
     1. **为什么输出的不是f2？**
+      
       ```javascript
         var scope = 'top';
         var f1 = function() { 
@@ -16,6 +17,7 @@
          f2(); // 输出 top
       ```
     2. **我还能访问closure，但this值改变**
+      
       ```javascript
          function closure(arg){
          var a ="closure";
@@ -37,6 +39,7 @@
        func()
        ```
     3. **this会被绑定在某个对象上**
+      
       ```javascript
        var b = "window.b"
        var funcFactory = function(){
@@ -56,6 +59,7 @@
           func();// 先出现func.b 后出现 undefined
        ```
    4.**函数执行完了，this绑定在window上**
+      
       ```javascript
       function func(){
         var a=1;
