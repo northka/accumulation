@@ -100,6 +100,7 @@
   1. 总而言之，作用域在语法分析时就已经处理完啦，JavaScript 的作用域是静态作用域，在运行时只是this（**上下文对象**）在一直发生变化。也就是一个在运行前就完成划分（词法作用域Lexical Scope），一个是在运行中改变（类似于动态作用域Dynamic Scope），严格意义上说JavaScript只是词法作用域。
   2. js只有function来划分作用域。this的改变方式就大概有三种,第一种call，apply，bind方法（有点类似于c++的组合型配接器）this会被绑定在第一个参数对象，第二种事件方法，setTimeout和setInterval会被绑定在全局对象上，像点击事件之类的会被绑定在dom对象上，第三种obj.func访问对象里的function会被绑定在最里面的对象上，例如obj1.obj2.obj3.func会绑定在obj3上（有人会说function里面也可以写this的属性，对呀function也是继承自Object的呀，它自己本身就带上下文对象的）
   3. 作用域可以访问嵌套它的作用域值，而this是按着原形链去访问它父级对象，注意啦就如上例obj1.obj2.obj3.func，obj3虽然是obj2的属性，但不是继承于obj2的，它继承是通过它prototype属性来继承的，所以在obj3.func中this并不会去访问obj2的属性
+  4. this 是执行上下文属性而不是变量的一个属性
 
 *****
 - ###后记###
