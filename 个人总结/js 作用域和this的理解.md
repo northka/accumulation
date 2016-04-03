@@ -3,72 +3,73 @@
  - ###从几个有意思的js问题开始###
 
     1. **为什么输出的不是f2？**
-      
-      ```javascript
-        var scope = 'top';
-        var f1 = function() { 
-            console.log(scope);
-        };
-        f1(); // 输出 top
-        var f2 = function() { 
-            var scope = 'f2'; 
-            f1();
-        };
-         f2(); // 输出 top
-      ```
+    
+        ```javascript
+         var scope = 'top';
+         var f1 = function () { 
+             console.log(scope);
+         };
+         f1 ();  // 输出 top
+         var f2 = function() { 
+             var scope = 'f2'; 
+             f1 ();
+         };
+         f2 ();  // 输出 top
+        ```
+
     2. **我还能访问closure，但this值改变**
       
-      ```javascript
+        ```javascript
          function closure(arg){
-         var a ="closure";
-         console.log(a);//(1) closure
-         console.log(this);//(2) obj对象
-           return function(){
-                console.log(a);//(4) closure
-                console.log(arg); // (5) arg
-                console.log(this);//(6) windowd对象
-                }
+             var a ="closure";
+             console.log(a);//(1) closure
+             console.log(this);//(2) obj对象
+             return function (){
+                 console.log(a);//(4) closure
+                 console.log(arg); // (5) arg
+                 console.log(this);//(6) windowd对象
+             }
            }
-       var obj ={
-        func:closure
-          }
-       function func () {
-        setTimeout(obj.func("arg"),100);
-        console.log("funcEnd");// (3)funcEnd
-          }
-       func()
-       ```
+         var obj ={
+             func:closure
+         }
+         function func () {
+             setTimeout(obj.func("arg"),100);
+             console.log("funcEnd");// (3)funcEnd
+         }
+         func ();
+        ```
     3. **this会被绑定在某个对象上**
       
-      ```javascript
-       var b = "window.b"
-       var funcFactory = function(){
-        var b ="func.b";
-        var obj ={
-            a:"obj.a",
-            func:function(){
-              console.log(b)
-              console.log(this.a);
-            }
-          }
-        return obj;
-       }
-       var temp =funcFactory()
-          var func = temp.func;
-          temp.func();// 先出现 func.b 后出现obj.a
-          func();// 先出现func.b 后出现 undefined
-       ```
+        ```javascript
+         var b = "window.b"
+         var funcFactory = function (){
+             var b ="func.b";
+             var obj ={
+                 a:"obj.a",
+                 func:function (){
+                     console.log(b)
+                     console.log(this.a);
+                 }
+             }
+             return obj;
+         }
+         var temp =funcFactory()
+         var func = temp.func;
+         temp.func ();   // 先出现 func.b 后出现obj.a
+         func ();        // 先出现func.b 后出现 undefined
+        ```
    4.**函数执行完了，this绑定在window上**
       
-      ```javascript
-      function func(){
-        var a=1;
-        setTimeout(function(){
-          console.log(a)
-        },100);
-        }
-        func();// 1
-      ```  
+        ```javascript
+         function func(){
+             var a=1;
+             setTimeout(function (){
+                 console.log(a)
+             },100);
+         }
+         func();// 1
+        ```  
 
 *******
 
