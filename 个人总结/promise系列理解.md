@@ -7,19 +7,20 @@
 
 2.  **回调的危害**
    回调在复杂的情况下导致了两大危害，第一，当你函数里面套着函数时，就相当于作用域里面包含着其他作用域，而当你回调时，你的数据来源来自于你所在的作用域，当回调复杂时你只有通过空格缩进去判断函数所在作用域。
-```javascript
- queryTheDatabase(query, function(error, result) { 
-  request(url, function(error, response) {            //这个作用域的response在回调函数
-    doSomethingElse(response, function(error, result) {
-      doAnotherThing(result, function(error, result) {
-        request(anotherUrl, function(error, response) {
-          ...
+        
+        ```javascript
+         queryTheDatabase(query, function(error, result) { 
+          request(url, function(error, response) {            //这个作用域的response在回调函数
+            doSomethingElse(response, function(error, result) {
+              doAnotherThing(result, function(error, result) {
+                request(anotherUrl, function(error, response) {
+                  ...
+                });
+              });
+            });
+          });
         });
-      });
-    });
-  });
-});
-```
+        ```
    第二，一般回调复杂后，函数可能少则几百行多则几千行。这时，后面看代码的人根本无法快速理清代码逻辑，你也理不清是谁调用了谁。
 
 3. **解决回调的方法**
