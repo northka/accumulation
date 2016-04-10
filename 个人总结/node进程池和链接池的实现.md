@@ -38,6 +38,10 @@
               cp.exec("numactl --interleave=all");
            ```
        小内存的访问可以使用
+           ```javascript
+              var cp =require('child_process');
+              cp.exec("numactl --interleave=all");
+           ```
         2. 心跳包
           虽然父进程可以通过pm2守护进程，但子进程无法保障，我们可以通过每10秒，父进程向子进程发送信息，子进程发挥心跳包，如果没发会，杀死子进程，重创新的子进程放入进程池。
        
