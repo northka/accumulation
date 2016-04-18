@@ -20,3 +20,5 @@
   回答： 常规的后端做法，生成一个进程池，在这个进程池中放入和cpu同样个数的进程数，维护这个进程池master进程每几秒向进程池中的变量发送心跳包，死掉的进程重新fork放入进程池，给进程池内的进程通过process.send发送任务
   问题： 如何实现前后端同构
   回答： 这是react提出的一种理念，可以使用[webpack-isomorphic-tools](https://github.com/halt-hammerzeit/webpack-isomorphic-tools）,react还提出在外层实现一个数据处理容器使展示和数据处理分离，就如同redux样，从父元素传递信息给子元素。
+  问题： transform 对字体的影响
+  回答： 这与grayscale和sbu-pixel有关，可以使用-webkit-text-stroke:0.5px来做优化；在transform里属性设置成小数，也会导致模糊，所以可以把它变为整数来处理或者加入opacity来处理，tansform申明为perspective的可以进行GPU加速。
