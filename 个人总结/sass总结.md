@@ -31,4 +31,3 @@ $prefix-for-spec: true !default; // required for keyframe mixin
     }
   }
 }
-*@mixin
