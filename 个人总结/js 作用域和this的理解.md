@@ -61,18 +61,16 @@
         ```
    4.**函数执行完了，this绑定在window上**
       
-        ```javascript
-         
-         function func(){
-             var a=1;
-             setTimeout(function (){
-                 console.log(a)
-             },100);
-         }
-         
-         func();// 1
-         
-        ```  
+    ```javascript
+     function func(){
+         var a=1;
+         setTimeout(function (){
+             console.log(a)
+         },100);
+     }
+     func();// 1
+    ``` 
+        
 
 *******
 
